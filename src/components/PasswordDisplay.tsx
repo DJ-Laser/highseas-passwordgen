@@ -20,7 +20,15 @@ const useWidth = (target: React.RefObject<HTMLElement>) => {
   return width;
 };
 
-export function PasswordDisplay() {
+export interface PasswordDisplayProps {
+  password: string;
+  onRegenerate: () => void;
+}
+
+export function PasswordDisplay({
+  password,
+  onRegenerate,
+}: PasswordDisplayProps) {
   const widthTracker = useRef<HTMLSpanElement>(null);
   const width = useWidth(widthTracker);
 
@@ -31,13 +39,13 @@ export function PasswordDisplay() {
           style={{ width }}
           className="absolute overflow-hidden text-start text-ellipsis break-none"
         >
-          paubcyiusjncfopusbpiuwsedfrgthyjnbgvfcdsfrgthyjmnhbvcdfrgthyjukmnhbvcf
+          {password}
         </p>
       </span>
       <button className="h-full">
         <Copy />
       </button>
-      <button className="h-full">
+      <button onClick={onRegenerate} className="h-full">
         <RefreshCw />
       </button>
     </div>
