@@ -23,6 +23,20 @@ export class CharSet {
     return newSet;
   }
 
+  and(other: CharSet, probability = 1): CharSet {
+    const newSet = new CharSet("", probability);
+
+    for (const c of this.chars) {
+      newSet.chars.add(c);
+    }
+
+    for (const c of other.chars) {
+      newSet.chars.add(c);
+    }
+
+    return newSet;
+  }
+
   getChar(): string {
     const idx = Math.floor(Math.random() * this.chars.size);
     let i = 0;
