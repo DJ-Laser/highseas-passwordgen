@@ -42,10 +42,13 @@ export function PasswordDisplay({
           {password}
         </p>
       </span>
-      <button className="h-full">
+      <button
+        className="h-full"
+        onClick={() => navigator.clipboard.writeText(password)}
+      >
         <Copy />
       </button>
-      <button onClick={onRegenerate} className="h-full">
+      <button className="h-full" onClick={onRegenerate}>
         <RefreshCw />
       </button>
     </div>
