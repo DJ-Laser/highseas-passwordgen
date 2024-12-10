@@ -1,17 +1,26 @@
 export class CharSet {
   private chars: Set<string>;
+  private _probability: number;
 
-  constructor(chars: string) {
+  constructor(chars: string, probability = 1) {
+    this._probability = probability;
     this.chars = new Set();
     for (const c of chars) {
       this.chars.add(c);
     }
   }
 
-  private addChars(chars: Set<string>) {
-    for (const c of chars) {
-      this.chars.add(c);
+  get probability() {
+    return this._probability;
+  }
+
+  withProbability(probability = this.probability) {
+    const newSet = new CharSet("", probability);
+    for (const c of this.chars) {
+      newSet.chars.add(c);
     }
+
+    return newSet;
   }
 
   getChar(): string {
@@ -27,12 +36,8 @@ export class CharSet {
     throw "Can't get a char from this set";
   }
 
-  and(other: CharSet): CharSet {
-    const union = new CharSet("");
-    union.addChars(this.chars);
-    union.addChars(other.chars);
-
-    return union;
+  isEmpty(): boolean {
+    return this.chars.size == 0;
   }
 }
 
@@ -41,10 +46,38 @@ export const LOWERCASE = new CharSet("abcdefghijklmnopqrstuvwxyz");
 export const NUMBERS = new CharSet("1234567890");
 export const SYMBOLS = new CharSet("!@#$%^&*");
 
-export function genPassword(charsAvailable: CharSet, length: number): string {
+// Gets a charset from a list based on the probabilities
+export function getCharSet(charSets: CharSet[]): CharSet {
+  if (charSets.length === 0) {
+    throw "Bruh you need at least one set";
+  }
+
+  const totalProbability = charSets.reduce((p, set) => p + set.probability, 0);
+  const randValue = Math.random() * totalProbability;
+  let probability = 0;
+
+  // Each iteration, the randValue wasn't less than the total, so the probability is p + set.probability
+  for (const set of charSets) {
+    probability += set.probability;
+    if (randValue < probability) {
+      return set;
+    }
+  }
+
+  // Return the last set is we didnt get any match
+  // Could happen dut to floating point if randvalue is very close to total
+  return charSets[charSets.length - 1];
+}
+
+export function genPassword(charSets: CharSet[], length: number): string {
+  const charsAvailable = charSets.filter((set) => !set.isEmpty());
+  if (charsAvailable.length == 0) return "";
+
   let password = "";
+
   for (let i = 0; i < length; i++) {
-    password += charsAvailable.getChar();
+    const set = getCharSet(charsAvailable);
+    password += set.getChar();
   }
 
   return password;

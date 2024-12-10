@@ -1,46 +1,26 @@
-import { useMemo, useState } from "react";
-import { CharSet, LOWERCASE, NUMBERS, SYMBOLS, UPPERCASE } from "../password";
 import { CharsOption } from "./CharsOption";
 
 export interface CharSelectorProps {
-  onCharsChanged: (chars: CharSet) => void;
+  onSelectionChanged: (index: number, state: boolean) => void;
+  onCustomChanged: (customChars: string) => void;
+  selected: boolean[];
+  groups: string[];
 }
 
-export function CharSelector({ onCharsChanged }: CharSelectorProps) {
-  const charSets = [UPPERCASE, LOWERCASE, NUMBERS, SYMBOLS];
-  const labels = [
-    "Uppercase (ABC)",
-    "Lowercase (abc)",
-    "Numbers (123)",
-    "Symbols (!#$)",
-  ];
-  const [selected, setSelected] = useState([true, true, true, true]);
-  const [customChars] = useState("");
-  const customCharSet = useMemo(() => new CharSet(customChars), [customChars]);
-
-  const setChecked = (checked: boolean, index: number) => {
-    const newSelected = [...selected];
-    newSelected[index] = checked;
-    setSelected(newSelected);
-    let chars = customCharSet;
-    for (let i = 0; i < charSets.length; i++) {
-      if (newSelected[i]) {
-        chars = chars.and(charSets[i]);
-      }
-    }
-
-    onCharsChanged(chars);
-  };
-
+export function CharSelector({
+  onSelectionChanged,
+  selected,
+  groups,
+}: CharSelectorProps) {
   return (
     <div className="grid grid-cols-2 grid-rows-[min-content,_1fr] gap-x-6">
       <div className="row-start-2">
-        {labels.map((text, i) => (
+        {groups.map((label, i) => (
           <CharsOption
             key={i}
-            text={text}
+            text={label}
             checked={selected[i]}
-            onChange={(checked) => setChecked(checked, i)}
+            onChange={(checked) => onSelectionChanged(i, checked)}
           />
         ))}
       </div>
