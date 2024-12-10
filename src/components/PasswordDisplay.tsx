@@ -33,11 +33,11 @@ export function PasswordDisplay({
   const width = useWidth(widthTracker);
 
   return (
-    <div className="w-full px-2 flex flex-row flex-nowrap gap-2">
+    <div className="my-2 w-full px-2 flex flex-row flex-nowrap gap-2">
       <span ref={widthTracker} className="grow">
         <p
           style={{ width }}
-          className="absolute overflow-hidden text-start text-ellipsis break-none"
+          className="absolute overflow-hidden text-start text-ellipsis text-nowrap break-none"
         >
           {password}
         </p>

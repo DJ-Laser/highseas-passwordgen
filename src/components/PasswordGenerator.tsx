@@ -8,6 +8,7 @@ import {
   UPPERCASE,
 } from "../password";
 import { CharSelector } from "./CharSelector";
+import { LengthSelector } from "./LengthSelector";
 import { PasswordDisplay } from "./PasswordDisplay";
 
 const charSets = [UPPERCASE, LOWERCASE, NUMBERS, SYMBOLS];
@@ -44,7 +45,7 @@ export function PasswordGenerator() {
 
   const [customChars, setCustomChars] = useState("");
 
-  const [length, _setLength] = useState(8);
+  const [length, setLength] = useState(8);
   const [password, setPassword] = useState(() =>
     regenerate(customChars, selected, length),
   );
@@ -56,6 +57,15 @@ export function PasswordGenerator() {
         onRegenerate={() =>
           setPassword(regenerate(customChars, selected, length))
         }
+      />
+      <LengthSelector
+        length={length}
+        min={1}
+        max={99}
+        onChange={(length) => {
+          setLength(length);
+          setPassword(regenerate(customChars, selected, length));
+        }}
       />
       <CharSelector
         groups={labels}
