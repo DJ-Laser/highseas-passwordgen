@@ -15,7 +15,7 @@ export function LengthSelector({
     <div className="w-full px-2 flex flex-row flex-nowrap gap-2">
       <p>Length:</p>
       <input
-        className="grow"
+        className="grow parchment-range"
         type="range"
         value={length}
         step={1}
@@ -24,7 +24,7 @@ export function LengthSelector({
         onInput={(e) => onChange(parseInt(e.currentTarget.value))}
       />
       <input
-        className="w-6 spin-hide"
+        className="w-6 appearance-textfield"
         type="number"
         value={length}
         step={1}
