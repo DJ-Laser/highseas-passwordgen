@@ -9,9 +9,12 @@ function App() {
         backgroundImage: `url('${map}')`,
       }}
     >
-      <h1 className="mt-6 mb-10 font-bold text-parchment-ink-dark text-5xl">
-        Password Generator
+      <h1 className="mt-2 mb-2 font-bold text-parchment-ink-dark text-5xl">
+        Davy Jones Locker
       </h1>
+      <h2 className="mb-4">
+        Protect your booty while sailing the digital seas
+      </h2>
       <PasswordGenerator />
     </div>
   );
