@@ -1,7 +1,23 @@
-# DJ_Laser's React Web Template
+# Davy Jones Locker ⚓
 
-This template is mainly intended so I can create new web apps easily, but anyone can feel free to use it.
+### A priate themed password generator to keep your treasure safe
 
-I wanted to only have to so through setting up node stuff one last time since i use these frameworks together so often.
+## Features 🌊
 
-It also has a nix flake to setup node automagically via direnv.
+- **Random Password Generation**
+  Generate strong, random passwords at the click of a button
+- **Length Customization**
+  Choose your desired password length (1-99 characters)
+- **Character Customization**
+  Choose from uppercase, lowercase, numbers, and symbols, or provide your own
+- **Copy to Clipboard**
+  Easy to use "Copy" button to quickly save your new password.
+- **Pirate-Themed Interface**
+  A pirate-inspired design that adds a bit of fun to the otherwise boring task of password creation.
+
+## Technologies Used
+
+- **React** For building the UI
+- **Vite** Blazing fast dev server
+- **TailwindCSS** For styling withous lots of silly css (except not actually because styling form elements is hell)
+- **TypeScript** Because static typing is always better
