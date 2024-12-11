@@ -16,7 +16,7 @@
 
   .parchment-range::-webkit-slider-thumb,
   .parchment-range::-moz-range-thumb {
-    @apply bg-parchment-paper inset-ring-parchment-ink-light inset-1 h-[55] w-[55] appearance-none rounded-full border-none inset-ring-2;
+    @apply bg-parchment-paper inset-ring-parchment-ink-light inset-1 appearance-none rounded-full border-none inset-ring-2;
   }
 }
 
