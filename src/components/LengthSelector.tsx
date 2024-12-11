@@ -24,13 +24,22 @@ export function LengthSelector({
         onInput={(e) => onChange(parseInt(e.currentTarget.value))}
       />
       <input
-        className="w-10"
+        className="w-6 spin-hide"
         type="number"
         value={length}
         step={1}
         min={min}
         max={max}
-        onInput={(e) => onChange(parseInt(e.currentTarget.value))}
+        onInput={(e) => {
+          const value = parseInt(e.currentTarget.value);
+          if (value < min) {
+            onChange(min);
+          } else if (value > max) {
+            onChange(max);
+          } else {
+            onChange(value);
+          }
+        }}
       />
     </div>
   );

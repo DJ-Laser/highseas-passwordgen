@@ -1,5 +1,16 @@
 @import "tailwindcss";
 
+@layer components {
+  .spin-hide::-webkit-outer-spin-button,
+  .spin-hide::-webkit-inner-spin-button,
+  .spin-hide {
+    -webkit-appearance: none;
+    -moz-appearance: textfield;
+    appearance: textfield;
+    margin: 0;
+  }
+}
+
 @theme {
   --color-parchment-ink-dark: #653916;
   --color-parchment-ink-light: #6c471d;
