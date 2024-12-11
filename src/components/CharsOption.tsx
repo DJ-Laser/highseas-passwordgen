@@ -14,7 +14,7 @@ export function CharsOption({
   return (
     <div className="m-1 flex flex-row flex-nowrap">
       <input
-        className="mr-2"
+        className="mr-2 bg-red-100 border-red-300 text-red-600 accent-parchment-ink-light"
         type="checkbox"
         checked={checked}
         disabled={disabled}
