@@ -24,7 +24,7 @@ export function LengthSelector({
         onInput={(e) => onChange(parseInt(e.currentTarget.value))}
       />
       <input
-        className="w-6 appearance-textfield"
+        className="w-6 appearance-textfield text-center bg-parchment-paper-stained rounded-[0.15rem]"
         type="number"
         value={length}
         step={1}
