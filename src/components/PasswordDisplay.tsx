@@ -29,6 +29,8 @@ export function PasswordDisplay({
   password,
   onRegenerate,
 }: PasswordDisplayProps) {
+  const buttonStyle =
+    "h-full hover:bg-parchment-paper-stained outline-transparent hover:outline-parchment-paper-stained transition-all duration-300 outline-4 rounded";
   const widthTracker = useRef<HTMLSpanElement>(null);
   const width = useWidth(widthTracker);
 
@@ -43,12 +45,12 @@ export function PasswordDisplay({
         </p>
       </span>
       <button
-        className="h-full"
+        className={buttonStyle}
         onClick={() => navigator.clipboard.writeText(password)}
       >
         <Copy />
       </button>
-      <button className="h-full" onClick={onRegenerate}>
+      <button className={buttonStyle} onClick={onRegenerate}>
         <RefreshCw />
       </button>
     </div>
