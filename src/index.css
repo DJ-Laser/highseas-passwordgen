@@ -1,1 +1,8 @@
 @import "tailwindcss";
+
+@theme {
+  --color-parchment-ink-dark: #653916;
+  --color-parchment-ink-light: #6c471d;
+  --color-parchment-paper-stained: #ddad6d;
+  --color-parchment-paper: #e7c07c;
+}

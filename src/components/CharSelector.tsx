@@ -24,7 +24,9 @@ export function CharSelector({
           />
         ))}
       </div>
-      <h3 className="my-3 col-span-2 font-bold text-3xl">Characters</h3>
+      <h3 className="my-3 col-span-2 font-bold text-parchment-ink-dark text-3xl">
+        Characters
+      </h3>
       <div className="">
         <textarea
           className="w-full h-full col-start-2 resize-none"
