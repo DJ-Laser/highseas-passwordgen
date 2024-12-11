@@ -5,16 +5,28 @@
 }
 
 @layer components {
+  .appearance-textfield::-webkit-outer-spin-button,
+  .appearance-textfield::-webkit-inner-spin-button {
+    appearance: none;
+    margin: 0;
+  }
+
   .parchment-range {
     @apply appearance-none;
   }
 
-  .parchment-range::-webkit-slider-runnable-track,
+  .parchment-range::-webkit-slider-runnable-track {
+    @apply bg-parchment-paper-stained h-[40%] rounded-l-full rounded-r-full border-none;
+  }
+
   .parchment-range::-moz-range-track {
     @apply bg-parchment-paper-stained h-[40%] rounded-l-full rounded-r-full border-none;
   }
 
-  .parchment-range::-webkit-slider-thumb,
+  .parchment-range::-webkit-slider-thumb {
+    @apply bg-parchment-paper-stained h-[40%] rounded-l-full rounded-r-full border-none;
+  }
+
   .parchment-range::-moz-range-thumb {
     @apply bg-parchment-paper inset-ring-parchment-ink-light inset-1 appearance-none rounded-full border-none inset-ring-2;
   }
