@@ -5,12 +5,15 @@ export interface CharSelectorProps {
   onCustomChanged: (customChars: string) => void;
   selected: boolean[];
   groups: string[];
+  custom: string;
 }
 
 export function CharSelector({
   onSelectionChanged,
+  onCustomChanged,
   selected,
   groups,
+  custom,
 }: CharSelectorProps) {
   return (
     <div className="grid grid-cols-2 grid-rows-[min-content,_1fr] gap-x-6">
@@ -31,6 +34,8 @@ export function CharSelector({
         <textarea
           className="w-full h-full col-start-2 resize-none"
           placeholder="Enter custom characters..."
+          value={custom}
+          onInput={(e) => onCustomChanged(e.currentTarget.value)}
         />
       </div>
     </div>

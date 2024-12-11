@@ -21,8 +21,8 @@ const labels = [
 ];
 
 function regenerate(customChars: string, selected: boolean[], length: number) {
-  const chars = charSets;
-  const charsSelected = selected;
+  const chars = [...charSets];
+  const charsSelected = [...selected];
   // Make letters always have same total priority by concatenating them
   if (selected[0] && selected[1]) {
     chars.push(charSets[0].and(charSets[1]));
@@ -70,7 +70,11 @@ export function PasswordGenerator() {
       <CharSelector
         groups={labels}
         selected={selected}
-        onCustomChanged={(customChars) => setCustomChars(customChars)}
+        custom={customChars}
+        onCustomChanged={(newCustom) => {
+          setCustomChars(newCustom);
+          setPassword(regenerate(newCustom, selected, length));
+        }}
         onSelectionChanged={(index, checked) => {
           const newSelected = [...selected];
           newSelected[index] = checked;

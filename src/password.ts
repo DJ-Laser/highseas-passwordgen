@@ -6,6 +6,7 @@ export class CharSet {
     this._probability = probability;
     this.chars = new Set();
     for (const c of chars) {
+      if (c === " ") continue;
       this.chars.add(c);
     }
   }

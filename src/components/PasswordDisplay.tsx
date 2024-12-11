@@ -37,7 +37,7 @@ export function PasswordDisplay({
       <span ref={widthTracker} className="grow">
         <p
           style={{ width }}
-          className="absolute overflow-hidden text-start text-ellipsis text-nowrap break-none"
+          className="absolute overflow-hidden font-mono text-start text-ellipsis text-nowrap break-none"
         >
           {password}
         </p>
