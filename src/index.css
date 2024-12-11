@@ -24,11 +24,14 @@
   }
 
   .parchment-range::-webkit-slider-thumb {
-    @apply bg-parchment-paper-stained h-[40%] rounded-l-full rounded-r-full border-none;
+    @apply bg-parchment-paper inset-ring-parchment-ink-light inset-1 cursor-pointer appearance-none rounded-full border-none inset-ring-2;
+    margin-top: -4px;
+    width: 1rem;
+    height: 1rem;
   }
 
   .parchment-range::-moz-range-thumb {
-    @apply bg-parchment-paper inset-ring-parchment-ink-light inset-1 appearance-none rounded-full border-none inset-ring-2;
+    @apply bg-parchment-paper inset-ring-parchment-ink-light inset-1 cursor-pointer appearance-none rounded-full border-none inset-ring-2;
   }
 }
 
